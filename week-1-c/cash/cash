@@ -1,0 +1,36 @@
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Ask user for the change owed
+    int change;
+    do
+    {
+        change = get_int("Change owed: ");
+    }
+    while (change < 1);
+
+    // greedy algorithm for change
+    int total_coins = 0;
+    if (change >= 25)
+    {
+        total_coins += change / 25;
+        change %= 25;
+    }
+    if (change >= 10)
+    {
+        total_coins += change / 10;
+        change %= 10;
+    }
+    if (change >= 5)
+    {
+        total_coins += change / 5;
+        change %= 5;
+    }
+    if (change >= 1)
+    {
+        total_coins += change / 1;
+    }
+    printf("Your change is %i coins\n", total_coins);
+}
