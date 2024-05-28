@@ -4,6 +4,7 @@
 #include <string.h>
 
 bool only_chars_once(string key);
+void cipher(string plaintext, string key);
 
 int main(int argc, string argv[])
 {
@@ -20,7 +21,8 @@ int main(int argc, string argv[])
             else
             {
                 string plaintext = get_string("plaintext: ");
-                printf("ciphertext: \n");
+                cipher(plaintext, argv[1]);
+                printf("ciphertext: %s\n", plaintext);
                 return 0;
             }
         }
@@ -60,7 +62,26 @@ bool only_chars_once(string key)
     return true;
 }
 
-char cypher(string plaintext)
+void cipher(string plaintext, string key)
 {
-    // substitute each plaintext index with its corresponding index in the cyphertext
+    int length = strlen(plaintext);
+    int corresponding_char = 0;
+
+    for (int i = 0; i < length; i++)
+    {
+        if (isupper(plaintext[i]) != 0)
+        {
+            corresponding_char = plaintext[i] - 'A';
+            plaintext[i] = toupper(key[corresponding_char]);
+        }
+        else if (islower(plaintext[i]) != 0)
+        {
+            corresponding_char = plaintext[i] - 'a';
+            plaintext[i] = tolower(key[corresponding_char]);
+        }
+        else
+        {
+            continue;
+        }
+    }
 }
