@@ -1,0 +1,11 @@
+sort1 uses: bubble sort
+
+How do you know?: Slightly faster than sort3, made me think about omega(n).
+
+sort2 uses: merge sort
+
+How do you know?: had the same speed for all examples and was faster.
+
+sort3 uses: selection sort
+
+How do you know?: Struggled with the reversed lists the most
